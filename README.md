@@ -9,5 +9,5 @@ The OnePlus 6 has three GPIO chips. Each of them has several (many, actually) li
 They are of the "active low" type, which means that their value is `0` when triggered and `1` otherwise.
 ## Putting it together
 1. The current value of the tri-state key has to be continuously polled by a daemon (inspiration [here](https://stackoverflow.com/questions/17954432/creating-a-daemon-in-linux)) in order to layer it with a debouce algorithm (examples [here](https://my.eng.utah.edu/~cs5780/debouncing.pdf))
-2. The daemon should be an `rc-service` (I guess?) since Alpine/PostmarketOS are OpenRC distributions and non Systemd ones
+2. The daemon should be an `rc-service` (I guess? Follow [these](https://github.com/OpenRC/openrc/blob/master/service-script-guide.mdhttps://github.com/OpenRC/openrc/blob/master/service-script-guide.md) rules) since Alpine/PostmarketOS are OpenRC distributions and non Systemd ones
 3. Based on the (debouced) value of the tri-state key, the daemon should switch between the three ring/vibrate/mute properties of the current desktop environment
