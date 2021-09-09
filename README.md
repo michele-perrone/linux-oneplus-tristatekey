@@ -1,5 +1,18 @@
 # OnePlus 6(T) tri-state key support in PostmarketOS
 As the name suggest, the goal of this little project is to hook up the OnePlus6(T) tri-state key in PostmarketOS. This can be done in the userspace with the `gpiod` library.
+## Installation and usage
+Open your favorite terminal and type the following commands:
+~~~
+wget https://github.com/michele-perrone/postmarketos-oneplus6-tristatekey/blob/main/perrone.michele%40outlook.com-6139e12f.rsa.pub
+sudo cp perrone.michele@outlook.com-6139e12f.rsa.pub /etc/apk/keys/perrone.michele@outlook.com-6139e12f.rsa.pub
+rm perrone.michele@outlook.com-6139e12f.rsa.pub
+wget https://github.com/michele-perrone/postmarketos-oneplus6-tristatekey/releases/download/0.1.0-r0/tristatekey-daemon-0.1.0-r0.apk
+sudo apk add tristatekey-daemon-0.1.0-r0.apk
+sudo usermod -aG gpiod $USER
+sudo reboot now
+~~~
+Your OnePlus 6 will now reboot. Enjoy your tri-state key!
+
 ## Gimme the pins
 The OnePlus 6 has three GPIO chips. Each of them has several (many, actually) lines. The three pins that correspond to the tri-state key belong to `gpiochip2` and are the following lines:
 * 24 (bottom)
