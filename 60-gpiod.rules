@@ -1,0 +1,2 @@
+# udev rules for gpio port access through libgpiod
+SUBSYSTEM=="gpio", KERNEL=="gpiochip[0-3]", GROUP="gpiod", MODE="0660"

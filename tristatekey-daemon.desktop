@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=OnePlus6 tri-state key daemon 
+Exec=/usr/bin/tristatekey-daemon
+StartupNotify=false
+Terminal=false

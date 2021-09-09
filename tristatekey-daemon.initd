@@ -1,6 +1,0 @@
-#!/sbin/openrc-run
-
-command="/usr/bin/tristatekey-daemon"
-pidfile="/run/tristatekey-daemon.pid"
-command_background=true
-
