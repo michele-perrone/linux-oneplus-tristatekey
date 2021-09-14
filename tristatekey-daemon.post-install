@@ -1,0 +1,6 @@
+#!/bin/sh
+
+rc-service tristatekey-root-daemon start
+rc-update add tristatekey-root-daemon
+
+exit 0
