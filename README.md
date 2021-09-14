@@ -6,9 +6,9 @@ Open your favorite terminal and type the following commands:
 wget https://github.com/michele-perrone/postmarketos-oneplus6-tristatekey/blob/main/perrone.michele%40outlook.com-6139e12f.rsa.pub
 sudo cp perrone.michele@outlook.com-6139e12f.rsa.pub /etc/apk/keys/perrone.michele@outlook.com-6139e12f.rsa.pub
 rm perrone.michele@outlook.com-6139e12f.rsa.pub
-wget https://github.com/michele-perrone/postmarketos-oneplus6-tristatekey/releases/download/0.1.0-r0/tristatekey-daemon-0.1.0-r0.apk
-sudo apk add tristatekey-daemon-0.1.0-r0.apk
-sudo usermod -aG gpiod $USER
+git clone https://github.com/michele-perrone/postmarketos-oneplus6-tristatekey/archive/refs/heads/testing.zip
+abuild -r
+sudo apk add tristatekey-daemon-0.2.0-r0.apk
 sudo reboot now
 ~~~
 Your OnePlus 6 will now reboot. Enjoy your tri-state key!
