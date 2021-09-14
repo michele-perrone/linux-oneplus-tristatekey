@@ -7,7 +7,7 @@
 #include <fcntl.h>
 #include <stdbool.h>
 
-#define DEBUG
+//#define DEBUG
 
 #define FIFO_PATH "/tmp/tristatekey-state"
 
