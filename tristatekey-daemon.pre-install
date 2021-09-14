@@ -1,5 +1,0 @@
-#!/bin/sh
-
-addgroup -S gpiod
-
-exit 0
