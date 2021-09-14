@@ -9,7 +9,7 @@
 //#define DEBUG
 
 #define FIFO_PATH "/tmp/tristatekey-state"
-#define FIFO_PERMISSIONS 666
+#define FIFO_PERMISSIONS 0666
 
 #define POLL_RATE_MS 20
 
@@ -139,7 +139,7 @@ int create_and_open_FIFO(char *pathname, mode_t permissions)
 {
     mkfifo(pathname, permissions);
 
-    int fd = open(pathname, O_WRONLY);
+    int fd = open(pathname, O_RDWR);
 
     return fd;
 }

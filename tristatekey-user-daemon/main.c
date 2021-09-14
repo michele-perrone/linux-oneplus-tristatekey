@@ -7,7 +7,7 @@
 #include <fcntl.h>
 #include <stdbool.h>
 
-//#define DEBUG
+#define DEBUG
 
 #define FIFO_PATH "/tmp/tristatekey-state"
 
@@ -36,7 +36,9 @@ int main()
     signal(SIGINT, sigint_handler);
 
     // Grab our end of the FIFO
+    char *path = "/tmp/tristatekey-state";
     fd_FIFO = open(FIFO_PATH, O_RDONLY);
+    printf("fd_FIFO: %i\n", fd_FIFO);
 
     // Initialize the DBus proxy for org.sigx.Feedback
     proxy = initialize_dbus_proxy();
@@ -54,7 +56,7 @@ void tristatekey_user_daemon_loop()
     while (true)
     {
         // Get the tri-state key value (blocking read from FIFO)
-        key_state = read(fd_FIFO, &key_state, sizeof (int));
+        read(fd_FIFO, &key_state, sizeof (int));
 
 #ifdef DEBUG
         // Print the state in a human-friendly way
@@ -74,6 +76,8 @@ void tristatekey_user_daemon_loop()
 
         // Set the property
         set_notify_property(key_state);
+
+        //usleep(10000);
     }
 
     return;
@@ -82,7 +86,7 @@ void tristatekey_user_daemon_loop()
 void sigint_handler(int sig_num)
 {
 #ifdef DEBUG
-    printf("\nTerminating daemon...");
+    printf("\nTerminating user daemon...");
 #endif
 
     // Close the FIFO
@@ -147,15 +151,6 @@ void set_notify_property(int key_state)
                                                       full_prop), G_DBUS_CALL_FLAGS_NONE, -1, NULL, NULL, NULL);
         break;
     }
-
-#ifdef DEBUG
-    // Get the "Profile" property and print it
-    GVariant *profile_prop = g_dbus_proxy_get_cached_property(proxy, "Profile");
-    gchar *current_prop_str;
-    g_variant_get(profile_prop, "s", &current_prop_str);
-    printf("Property \"Profile\" is set to: %s\n", current_prop_str);
-    g_free(current_prop_str);
-#endif
 
     return;
 }
