@@ -3,7 +3,7 @@ As the name suggest, the goal of this little project is to hook up the OnePlus6(
 ## Installation
 Open your favorite terminal and type the following commands:
 ~~~
-wget https://github.com/michele-perrone/postmarketos-oneplus6-tristatekey/releases/tag/0.2.0-r0
+wget https://github.com/michele-perrone/postmarketos-oneplus6-tristatekey/releases/download/0.2.0-r0/tristatekey-daemon-0.2.0-r0.apk
 sudo cp perrone.michele@outlook.com-6139e12f.rsa.pub /etc/apk/keys/perrone.michele@outlook.com-6139e12f.rsa.pub
 sudo apk add tristatekey-daemon-0.2.0-r0.apk
 sudo reboot now
